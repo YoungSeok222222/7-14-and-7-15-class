@@ -152,3 +152,10 @@ repository: 커밋(commit)들이 저장되는 곳
 - git push -u origin master
 - git clone {remote_repo} remote repo를 local로
 - __git push__ 
+---- 
+1. git init
+2. git commit -m "message"
+3. git remote add origin remote_repo
+4. git push -u origin master
+5. git add .
+6. git push
