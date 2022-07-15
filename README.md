@@ -159,4 +159,5 @@ repository: 커밋(commit)들이 저장되는 곳
 4. git push -u origin master
 5. git add .
 6. git push
-git clone 깃허브 주소(깃베쉬로 생성)
+git clone 깃허브 주소(깃베쉬로 생성) 
+init- add . - commit - push
