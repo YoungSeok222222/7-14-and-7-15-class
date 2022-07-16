@@ -131,5 +131,5 @@
 		local repository -> remote repository
 		수정한 내용을 remote repository 에 반영
 
-고생하셨습니다 !!!
+고생하셨습니다 !!!!
 	
