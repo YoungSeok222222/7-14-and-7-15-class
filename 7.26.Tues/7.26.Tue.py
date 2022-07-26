@@ -1,19 +1,22 @@
 
 ##제너레이터 
-# num = input(num)
-# def fn_d():
-#     result = 0
-#     for x in range(len(num)):
-#         result += int(num[x])
+num = input()
+def fn_d(num):
+    result = 0
+    for x in range(len(num)):
+        result += int(num[x])
+    return result+int[num]
   
-#     result = result + int(num)    
-#     print(result)
+     
 
-# fn_d(num)
-# #
-# def is_selfnumber():
+print(fn_d(num))
+#
+number = int(input())
+def is_selfnumber(x):
+    fn_d(x)
 
 
+is_selfnumber(number)
 ###################################
 #월말평가 6번
 
@@ -82,20 +85,142 @@ def only_square_area(widths,heights):
 print(only_square_are([32,55,63],[13,32,40,55]))
 
 
-       
+#######################
+##데일리 실습 6-5
+# 교수님 코드 (재귀함수를 이용해 각 자리수의 합을 구하는것 ex.123 => 6)
 
-  
-      
+# def sum_of_digit(num):
+#     if num < 10:
+#         return num
+#     return num % 10 + sum_of_digit(num//10)
+
+
+
+# print(sum_of_digit(5))
+# print(sum_of_digit(1234))
+       
+##############################################
+#0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
+#피보나치 수열
+def fibonacci(num):
+    if nuㅡ <2:
+        return num
+    return fibonacci(num-1) + fibonacci(num-2)
+   
         
 
+### list로 피보나치 받을 때
+fibo_list = []
+for i in range(18):
+    fibo_list.append(fibonacci(i))
+print(fibo_list)
+###
+
+print(fibonacci(5))  
+      
+   
+#####################
+#하노이 탑
+
+def hanoi(N,start,end,other):
+    if N ==1:
+        print(f'{start}->{end}')
+        return
+    
+    hanoi(N-1,start,other,end)
+    print(f'{start}->{end}')
+    hanoi(N-1, other, end, start)
 
 
+#원판의 갯수, 시작, 도착, 서브 기둥 번호
+N = 3
+hanoi(3,1,2,3)  
+#############################
 
+###########################
+#데일리 6-2
+#### mass_percent.py 파일
 
+def mass_1():
+    result_s = []
+    result_w = []
+    for i in range(6):
+        if i == 5: # 5번까지만 입력
+            break
 
+        a = list(input('소금물의 농도와 소금물의 양을 입력하세요 : ').split())
+        s = a[0]
 
+        if i >= 1 and s == 'Done': # 1번이상의 입력값을 받은 상태에서 Done 입력시 계산
+            break
+        else:
+            w = a[1]
+            s,w = int(s),int(w)
+            s = (s*w) / 100 # 소금의 양
+            w = w - s # 물의 양 (소금물- 소금)
+            result_s.append(s)
+            result_w.append(w)
 
+    result_w = sum(result_w) # 총 물의 양
+    result_s = sum(result_s) # 총 소금의 양
+    result_sw = result_w+result_s # 총 소금물의 양
 
+    s = (result_s/result_sw)*100 # 농도
+    w = result_w + result_s # 소금물의 양
+    return print(f"소금물의 농도는 : {round(s,2)}%\n소금물의 양은 : {round(w,2)}g")
+mass_1()
+#################
+
+import mass_percent
+
+mass_percent.mass_1()
+###########
+#소금 = 농도/100 * 소금물
+#농도 = 소금/소금물 *100
+##############################################
+
+#무엇이 중복일까 (오늘자 workshop 1번 문제)
+def duplicated_letters(words):
+    result = []
+    for word in words:
+        if  words.count(word) > 1 and word not in result:
+            result.append(word)
+    return result
+    
+duplicated_letters('apple') #=> ['p']
+duplicated_letters('banana') # =>['a','n']
+##########
+#다른 풀이 법
+def duplicated_letters(words):
+    return list(word for word in words if words.count(word)>1)
+
+duplicated_letters('apple') #=> ['p']
+duplicated_letters('banana') # =>['a','n']
+######
+result = []
+def duplicated_letters(words):
+    return [word for word in words if words.count(word) > 1 and not (word in result or result.add(word))]
+###############################
+#workshop 2번문제
+def low_and_up(word):
+    new_str = ''
+    for idx, char in enumerate(word,start=1):
+        if idx % 2 ==1:
+            new_str += char.lower()  
+        else:
+            new_str += char.upper()
+
+    return new_str
+
+print(low_and_up('apple'))
+print(low_and_up('banana'))
+####
+def low_and_up2(word):
+    new_str = [(char.lower() if idx %2 else char.upper()) for idx,char in enumerate(word,start = 1)]
+    return ''.join(new_str)
+
+print(low_and_up('apple'))
+print(low_and_up('banana'))
 
 
 
