@@ -194,21 +194,21 @@ mass_percent.mass_1()
 ##############################################
 # 소금물 농도 = 소금의양/소금물의 양 *100
 # 소금의 양 = 소금물 농도*소금물의 양 /100
+def mass():
+    salt=0
+    total_water=0
+    for _ in range(5):
+        salty = list(map(str, input().split()))
+        if salty[0]=='Done':
+            break
+        else:
+            perc, s_water = int(salty[0]), int(salty[1]) #perc: 소금물의 농도, s_water: 소금물의 양
+            salt+=perc*s_water/100
+            total_water+=s_water
+    percent = salt/total_water*100
+    print(f'농도: {percent: .2f}%, 소금물: {round(total_water, 2)}g')
 
-salt=0
-total=0
-for _ in range(5):
-    arr = list(map(str, input().split()))
-    if arr[0]=='Done':
-        break
-    else:
-        perc, s_water = int(arr[0]), int(arr[1]) #perc: 소금물의 농도, s_water: 소금물의 양
-        salt+=perc*s_water/100
-        total+=s_water
-percent = salt/total*100
-print(f'{percent: .2f}% {round(total, 2)}g')
-
-
+print(mass())
 ##############################################
 
 #무엇이 중복일까 (오늘자 workshop 1번 문제)
