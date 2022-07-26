@@ -1,31 +1,14 @@
-
-# def low_and_up(word):
-#     new_str = ''
-#     for idx, char in enumerate(word,start=1):
-#         if idx % 2 ==1:
-#             new_str += char.lower()  
-#         else:
-#             new_str += char.upper()
-
-#     return new_str
+square_area= ([32,55,63],[13,32,40,55])
+def only_square_area(s1,s2):
+    result = []
+    for first in range(len(s1)):
+        for second in range(len(s2)):
+            s1[first] == s2[second]
+            result.append(s1[first])
+    return result
 
 
-# print(low_and_up('apple'))
-# print(low_and_up('banana'))
+    
 
-####
-def low_and_up2(word):
-    new_str = [(char.lower() if idx %2 else char.upper()) for idx,char in enumerate(word,start = 1)]
-    return ''.join(new_str)
-print(low_and_up2('apple'))
-print(low_and_up2('banana'))
-
-
-
-
-
-
-
-
-
-
+           
+print(only_square_area([32,55,63],[13,32,40,55]))

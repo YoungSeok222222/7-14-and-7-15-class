@@ -54,7 +54,7 @@ print(count_vowels('banana'))
 def count_vowels(word):
     vowels = 'aeiou'
     count = 0
-    for voewl in vowels:
+    for vowel in vowels:
         count += word.count(vowel)
     return count
 print(count_vowels('apple'))
@@ -63,8 +63,8 @@ print(count_vowels('banana'))
 # #2번 4번?
 
 #3번########################
-only_square_area= ([32,55,63],[13,32,40,55])
-def only_square_are(L1,L2):
+square_area= ([32,55,63],[13,32,40,55])
+def only_square_area(L1,L2):
     new_list = []
     for i in range(len(L1)):
         for j in range(len(L2)):
@@ -73,7 +73,7 @@ def only_square_are(L1,L2):
     return new_list 
 
            
-print(only_square_are([32,55,63],[13,32,40,55]))
+print(only_square_area([32,55,63],[13,32,40,55]))
 
 ####또다른 방법
 def only_square_area(widths,heights):
@@ -177,6 +177,24 @@ mass_percent.mass_1()
 ###########
 #소금 = 농도/100 * 소금물
 #농도 = 소금/소금물 *100
+##############################################
+# 소금물 농도 = 소금의양/소금물의 양 *100
+# 소금의 양 = 소금물 농도*소금물의 양 /100
+
+salt=0
+total=0
+for _ in range(5):
+    arr = list(map(str, input().split()))
+    if arr[0]=='Done':
+        break
+    else:
+        perc, s_water = int(arr[0][:-1]), int(arr[1][:-1]) #perc: 소금물의 농도, s_water: 소금물의 양
+        salt+=perc*s_water/100
+        total+=s_water
+percent = salt/total*100
+print(f'{percent: .2f}% {round(total, 2)}g')
+
+
 ##############################################
 
 #무엇이 중복일까 (오늘자 workshop 1번 문제)
