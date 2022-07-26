@@ -82,32 +82,45 @@ def only_square_area(widths,heights):
         if width in heights:
             combination_list.append(width**2)
     return combination_list
-print(only_square_are([32,55,63],[13,32,40,55]))
+print(only_square_area([32,55,63],[13,32,40,55]))
 
 
 #######################
 ##데일리 실습 6-5
 # 교수님 코드 (재귀함수를 이용해 각 자리수의 합을 구하는것 ex.123 => 6)
 
-# def sum_of_digit(num):
-#     if num < 10:
-#         return num
-#     return num % 10 + sum_of_digit(num//10)
+def sum_of_digit(num):
+    if num < 10:
+        return num
+    return num % 10 + sum_of_digit(num//10)
 
 
 
-# print(sum_of_digit(5))
-# print(sum_of_digit(1234))
-       
+print(sum_of_digit(5))
+print(sum_of_digit(1234))
+#########################
+#for문을 이용한 풀이
+
+num = input()
+def fn_d(num):
+    result = 0
+    for x in range(len(num)):
+        result += int(num[x])
+  
+     
+    return result
+
+print(fn_d(num))
+ ####################      
 ##############################################
 #0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
 #피보나치 수열
 def fibonacci(num):
-    if nuㅡ <2:
+    if num <2:
         return num
     return fibonacci(num-1) + fibonacci(num-2)
    
-        
+print(fibonacci(5))        
 
 ### list로 피보나치 받을 때
 fibo_list = []
@@ -134,7 +147,7 @@ def hanoi(N,start,end,other):
 
 #원판의 갯수, 시작, 도착, 서브 기둥 번호
 N = 3
-hanoi(3,1,2,3)  
+hanoi(3,1,3,2)  
 #############################
 
 ###########################
@@ -176,7 +189,8 @@ import mass_percent
 mass_percent.mass_1()
 ###########
 #소금 = 농도/100 * 소금물
-#농도 = 소금/소금물 *100
+#농도 = (소금*100) /소금물
+#소금물 = (소금*100) /농도
 ##############################################
 # 소금물 농도 = 소금의양/소금물의 양 *100
 # 소금의 양 = 소금물 농도*소금물의 양 /100
@@ -188,7 +202,7 @@ for _ in range(5):
     if arr[0]=='Done':
         break
     else:
-        perc, s_water = int(arr[0][:-1]), int(arr[1][:-1]) #perc: 소금물의 농도, s_water: 소금물의 양
+        perc, s_water = int(arr[0]), int(arr[1]) #perc: 소금물의 농도, s_water: 소금물의 양
         salt+=perc*s_water/100
         total+=s_water
 percent = salt/total*100
