@@ -1,7 +1,7 @@
 class Wordrelay():
     # 1. words 리스트를 전달받아 인스턴스 변수로 만드는 생성자를 구현하세요
     def __init__(self,words):
-        self.words = words
+        self.words = words #wordrelay.words = ["round","dream","magnet","tweet","tweet","trick","kiwi"]
 
     # 2. 실패와 성공 여부를 결정하는 함수를 구현하세요
     # i번째 사람이 탈락을 했다
