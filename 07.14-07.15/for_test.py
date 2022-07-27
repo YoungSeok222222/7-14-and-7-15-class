@@ -6,6 +6,7 @@ print(levels[2])
 print(levels[3])
 
 # for문 정해진 범위를 반복하기에 종료조건이 필요 없음
+#for 문에서 자주 쓰는 함수!!!!! range,len,enumerate
 for x in levels:
     print(x)
  

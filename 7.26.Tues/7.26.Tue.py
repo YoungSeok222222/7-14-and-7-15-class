@@ -23,20 +23,20 @@ is_selfnumber(number)
 
 
 
-# def caesar(word,n):
-#     li = list(word)
-#     print(li)
-#     #소문자는 소문자로 / 대문자는 대문자로 암호화
-#     #문자열의 islower(), isupper() 메서드로 소문자, 대문자 여부를 알 수 있다.
-#     for i in range(len(li)):
-#         if li[i].isupper():
-#             li[i] = chr(65 + ((ord(li([i])) - 65 + n) % 26))
-#         elif li[i].islower():
-#             li[i] = chr(97 + ((ord(li[i])- 97 + n)%26))
+def caesar(word,n):
+    li = list(word)
+    #print(li)
+    #소문자는 소문자로 / 대문자는 대문자로 암호화
+    #문자열의 islower(), isupper() 메서드로 소문자, 대문자 여부를 알 수 있다.
+    for i in range(len(li)):
+        if li[i].isupper():
+            li[i] = chr(65 + ((ord(li[i]) - 65 + n) % 26))
+        elif li[i].islower():
+            li[i] = chr(97 + ((ord(li[i])- 97 + n)%26))
         
-#     return ''.join(li)    
+    return ''.join(li)    
         
-# print(caesar('apple',5))
+print(caesar('apple',5))
 #################################################
 
 
@@ -220,23 +220,28 @@ def duplicated_letters(words):
     return result
     
 duplicated_letters('apple') #=> ['p']
-duplicated_letters('banana') # =>['a','n']
+duplicated_letters('banana') # =>['a','n'] 
 ##########
 #다른 풀이 법
 def duplicated_letters(words):
-    return list(word for word in words if words.count(word)>1)
+    result =[]
+    [result.append(word) for word in words if words.count(word)>1 and word not in result]
+    return result
+duplicated_letters('apple') #=> ['p']
+duplicated_letters('banana') # =>['a','n']
+###########
+result = []
+def duplicated_letters(words):
+    return [word for word in words if words.count(word) > 1 and not (word in result or result.append(word))]
 
 duplicated_letters('apple') #=> ['p']
 duplicated_letters('banana') # =>['a','n']
-######
-result = []
-def duplicated_letters(words):
-    return [word for word in words if words.count(word) > 1 and not (word in result or result.add(word))]
+
 ###############################
 #workshop 2번문제
-def low_and_up(word):
+def low_and_up(words):
     new_str = ''
-    for idx, char in enumerate(word,start=1):
+    for idx, char in enumerate(words,start=1):
         if idx % 2 ==1:
             new_str += char.lower()  
         else:
@@ -248,7 +253,7 @@ print(low_and_up('apple'))
 print(low_and_up('banana'))
 ####
 def low_and_up2(word):
-    new_str = [(char.lower() if idx %2 else char.upper()) for idx,char in enumerate(word,start = 1)]
+    new_str = [(char.lower() if idx %2 else char.upper()) for idx,char in enumerate(word,start = 1)] #%2은 다음 % 2==1와 동일
     return ''.join(new_str)
 
 print(low_and_up('apple'))

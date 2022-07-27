@@ -1,32 +1,23 @@
-#리스트에서 index(색인) 하는 법-> 변수[위치]
-levels = [1415,1430,1475,1490]
-print(levels[0])
-print(levels[1])
-print(levels[2])
-print(levels[3])
+# #클래스 정의
+# class numbox():
+#     #클래스 변수
+#     class_variable = 'a'
+#     ####################### 여기까지 공통영역
+#     #인스턴스 변수
+#     def __init__(self,num):
+#         self.num =  num 
+#     ####### 여기까지 별개
+#     def tmp_func(self):
+#         print('test')
+# #################################여기까지 클래스(설계도) 영역
+# #####여기서부터는 인스턴스 영역
+# numbox_instance = numbox(10)
 
-# for문 정해진 범위를 반복하기에 종료조건이 필요 없음
-for x in levels:
-    print(x)
- 
- 
-greeting = '안녕하세요'   
-#while 
-count = 0
-while count< 4:
-    print(greeting)
-    count+=1
-    
-#for 
-for x in range(4):
-    print(greeting)
-    
-   
-    
-    
-    
-    
-    
-    
-    
-    
+# print(numbox_instance.num)
+
+
+
+
+
+
+
