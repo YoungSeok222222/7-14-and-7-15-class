@@ -273,7 +273,7 @@
 - CSS 우선순위를 아래와 같이 그룹을 지어볼 수 있다.
   1. 중요도(importance)- 사용시 주의-> !important
   2. 우선순위(specificity)
-     - 인라인 > id > class,속성,pseudo-class  > 요소, pseudo-element
+     - 요소, pseudo-element < class, 속성, pseudo-class < id < 인라인
   3. CSS파일 로딩 순서
       > 태그 < 클래스 < id < style < !important
      
