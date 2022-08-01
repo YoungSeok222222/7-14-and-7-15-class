@@ -344,3 +344,19 @@
   - Padding을 제외한 순수 contents 영역만을 box로 지정
 - 다만 우리가 일반적으로 영역을 볼 때는 border까지의 너비를 100px 보는 것을 원함
   - 그 경우 box-sizing을 border-box로 설정
+---
+>### CSS Display
+CSS 원칙
+- 모든 요소는 네모(박스모델)이고, 좌측상단에 배치.
+- display에 따라 크기와 배치가 달라진다.
+> 대표적으로 활용되는 display
+- display: block (div/ul,ol,il/p/hr/form 등)
+  - 줄바꿈이 일어나는 요소
+  - 화면 크기 전체의 가로 폭을 차지한다.
+  - 블록 레벨 요소 안에 인라인 레벨 요소가 들어갈 수 있음
+- display: inline (span/a/img/input,label/b,em,i,strong 등)
+  - 줄 바꿈이 일어나지 않는 행의 일부 요소
+  - content 너비만큼 가로 폭을 차지한다.
+  - width, height,margin-top, margin-bottom을 지정할 수 없다.
+  - 상하 여백은 line-height로 지정한다.
+  - 
