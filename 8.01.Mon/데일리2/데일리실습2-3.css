@@ -1,0 +1,25 @@
+.box{
+  width: 800px;
+  height: 800px;
+  border: 2px solid black;
+}
+
+.one-line{
+  font-size: 0px;
+  width: 800px;
+  height: 100px;
+}
+
+.white-box{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+}
+
+.black-box{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: black;
+}
