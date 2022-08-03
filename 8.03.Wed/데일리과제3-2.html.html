@@ -7,36 +7,36 @@
   <title>Document</title>
   <style>
     .outer-box {
-      width : 400px;
+      
+      
+      
+      border: black 1px dotted ;
       height: 200px;
-      border: 2px solid black;
-      color:red;
-      text-align: center;
+      width: 600px;
     }
 
-		
-
-
-		
-    
     .inner-box {
-      width : 200px;
-      height: 100px;
-			/* 추가 css 코드 작성 2 */
-      color:initial;
-      text-align: initial;
-      border:inherit
+      border: red 1px solid;
+      height: 200px;
+      width: 300px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
     }
 
+    .box {
+      height: 100px;
+      width: 100px;
+      background-color: skyblue;
+      
+    }
   </style>
 </head>
 <body>
   <div class="outer-box">
-    <div>
-      <span>첫 번째</span>
-    </div>
     <div class="inner-box">
-      <span>두 번째</span>
+      <div class="box">item1</div>
+      <div class="box">item2</div>
     </div>
   </div>
 </body>
