@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-contanier {
+            width: 850px;
+            height: 600px;
+            border: 1px solid gray;
+            margin-left: 50px;
+            margin-top: 50px;
+        }
+        .error {
+            background-color: crimson;
+            margin: 20px;
+            padding: 20px;
+            padding-left: 50px;
+            font-size:19px;
+            border-radius: 5px;
+        }
+        .sys {
+            margin-left: 30px;
+        }
+        .login-contanier {
+            display: flex;
+            width: 780px;
+            height: 350px;
+            border: 1px solid gray;
+            flex-direction: column;
+            margin-left: 30px;
+            border-radius: 5px;
+            /* padding-left: 40px; */
+            
+        }
+        .sign-in {
+            text-align: center;
+            font-size: 27px;
+        }
+        .hr {
+            width: 780px;
+            height: 2px;
+            background-color: blue;
+        }
+        .box {
+            width: 700px;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            margin-left: 40px;
+            
+        }
+        .data {
+            margin-left: 40px;
+        }
+        .box2 {
+            width: 700px;
+            height: 30px;
+            border: 1px solid black;
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-align: center;
+            color: white;  
+            border-radius: 5px;
+            border: 2px solid black;   
+            margin-left: 40px;       
+        }
+        .one {
+            display: flex;
+            align-items: center;
+            margin-left: 40px;
+        }
+        .Forgot {
+            text-align: right;
+            margin-left: auto;
+            margin-right: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-contanier">
+        <div class="error" style="color: white;">Invalid Login or password.</div>
+        <h1 class="sys"><strong>HPHK 전용 GitLab 시스템</strong></h1>
+        <hr style="margin-left:30px; margin-right:30px;">
+        <br>
+        <div class="login-contanier">
+            <div class="sign-in" style="margin-bottom:10px; margin-top:10px;"><strong>Sign in</strong></div>
+            <hr class="hr">
+            <p class="data"><strong>Username or Email</strong></p>
+            <div class="box"></div>
+            <p class="data"><strong>Password</strong></p>
+            <div class="box"></div>
+            <div class="one">
+                <input type="checkbox" class="checkbox"> <p> Remember me</p>
+                <a href="#" class="Forgot" style="text-decoration:none">Forgot your password?</a>
+            </div>
+            <div class="box2" style="background-color:green;">Sign in</div>
+        </div>
+    </div>
+</body>
+</html> 
