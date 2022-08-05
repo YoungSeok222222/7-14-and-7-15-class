@@ -1,0 +1,23 @@
+/* 03_community.css */
+/* 아래에 코드를 작성해 주세요. */
+
+@media (min-width: 992px){
+
+    table {
+        display:table; 
+    }
+    .hidingspot{
+        display:none
+    }
+}
+@media (max-width: 991px){
+    aside {
+        width: 100% !important;
+    }
+    table {
+        display: none; 
+    }
+    .hidingspot{
+        display:table
+    }
+}

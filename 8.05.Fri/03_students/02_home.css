@@ -1,0 +1,11 @@
+/* 02_home.css */
+/* 아래에 코드를 작성해 주세요. */
+section {
+    display: flex;
+    justify-content: center;
+}
+.card-group {
+    padding: 0;
+    margin: 0;
+    max-width: 1000px;
+}
