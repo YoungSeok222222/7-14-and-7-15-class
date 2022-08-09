@@ -40,22 +40,28 @@
 #     print(' '.join(map(str,result)))
 
 #민코딩 Level 16-5/2번
-# alphabet = [chr(i) for i in range(65,83)]
+# n_list = []
+# for i in range(6):
+#     arr = []
+#     uni = 65-i
+#     for j in range(17,4,-6):
+#         arr.append(chr(uni+j))
+#     n_list.append(arr)
+# print(n_list)
 
-# arr2 = []
-# for j in range(3):
+# n, m = map(int,input().split())
+# print(n_list[n][m])
 
-#     for i in range(6):
-#         arr2.append(alphabet[i])
-# print(arr2)
 
 #민코딩 Level 16-5 / 3번
-num = list(map(int,input().split()))
-arr1 =[]
-arr2 = []
+n = list(map(int,input().split()))
+
 for i in range(2):
-    num[i] = [num[i]+num[i+1]+num[i+2]]
-print(num)
+    arr = []
+    num = +i
+    for j in range(3):
+        arr.append(n[j])
+
 
 
 
