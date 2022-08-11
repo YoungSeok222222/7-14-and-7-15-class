@@ -1,17 +1,27 @@
-n = 6
-arr =[list(map(int,input().split())) for _ in range(6)]
-count = 0
+curser=[
+ '##########',
+ '##########',
+ '###_______',
+ '__________',
+ '__________',
+ '__________',
+]
+
+def Parametric_search():
+   for i in range(6):
+       if curser[i][0] == "#":
+           index = i
+   end = len(curser[2])-1
+   start = 0
+   max = -1
+   while
+       if
 
 
-for i in range(6):
-    for j in range(1):
-        if arr[i][j] < arr[i][j+1]:
-            arr[i][j], arr[i][j+1] = arr[i][j+1], arr[i][j]
-            count += 1
-
-for p in arr:
-    print(*p)
-print(f"{count}명")
 
 
 
+
+
+
+answer = Parametric_search()
