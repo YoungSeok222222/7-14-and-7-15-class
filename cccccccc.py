@@ -1,23 +1,20 @@
-arr = ["B","T","S","K","R"]
 n = int(input())
-used=  [0] * len(arr)
-path = [0] * n
-cnt = 0
-def abc(lv):
-    global cnt
+members= [0,1,2,3,4,5,6]
+company =[list(map(int,input().split())) for _ in range(7)]
 
 
-    if lv == n:
-        if used[2] == 1:
-            cnt +=1
-        return
+boss = 0
+boss_index = 0
+under = []
 
-    for i in range(5):
-        if used[i] == 0:
-            path[lv] = arr[i]
-            used[i] = 1
-            abc(lv+1)
-            path[lv] = 0
-            used[i] = 0
-abc(0)
-print(cnt)
+for x in range(7):
+    if company[0][x] == 1:
+        under.append(x)
+print(under)
+
+for y in range(5):
+    boss = 0
+    for x in range(5):
+        if company[y][x] == 1:
+            boss += 1
+    if
