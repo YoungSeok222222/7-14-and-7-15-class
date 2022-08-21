@@ -10,7 +10,81 @@ s = [0,1,2,3]
 #선택정렬을 이용하여 오름차순으로 정렬하시오.
 
 #########################
-#상하좌우 값이 좌표보다 작으면 좌표는 산봉우리 ㅇㅈ
+# 1. 배열 전체 평균 구하기
+# n 입력
+# n*n 배열을 입력
+'''
+5
+2 4 7 4 2
+2 9 5 3 1
+4 9 6 5 3
+3 7 9 2 3
+1 1 2 3 4
+'''
+
+n = int(input())
+arr = [list(map(int, input().split())) for _ in range(n)]
+
+
+sum = 0
+
+for i in range(5):
+    for j in range(5):
+        sum += arr[i][j]
+
+avg = sum//(n*n)
+print(int(avg))
+
+# 1-2. 각 좌표값이 배열평균과 차이는 값들의 합 출력하기
+sum_avg = 0
+for i in range(5):
+    for j in range(5):
+        if arr[i][j] > avg:
+            sum_avg += arr[i][j] - avg
+        else:
+            sum_avg += avg - arr[i][j]
+
+print(int(sum_avg))
+
+# 2. pattern 찾기
+
+n, m = map(int, input().split())
+arr = [list(map(int, input().split())) for _ in range(n)]
+pattern = [[1, 1], [1, 0]]
+
+# 0, 0 / 3, 2
+def findpattern(dy, dx):
+    # directy = [0, 0, 1, 1]
+    # directx = [0, 1, 0, 1]
+    for i in range(2):
+        for j in range(2):
+            if pattern[i][j] != arr[dy+i][dx+j]:
+                return 0
+    return 1
+ret = 0
+for i in range(4):
+    for j in range(3):
+        ret += findpattern(i, j)
+print(ret)
+
+'''
+5 4
+1 1 1 1
+1 0 1 1
+1 1 1 1
+1 1 0 1
+1 0 1 1
+'''
+
+
+# 3. 상하좌우 값이 좌표보다 작으면 좌표는 산봉우리 ㅇㅈ
+'''
+4 5
+2 4 2 1 5
+1 2 1 4 3
+2 2 2 4 2
+1 7 3 2 3
+'''
 n, m  = map(int,input().split())
 arr = [list(map(int,input().split())) for _ in range(n)]
 
@@ -36,7 +110,7 @@ for y in range(n):
 print(cnt)
 #####################
 ## dfs 심화1 (완전탐색)
-#그림 1 참조
+#그림 1 참조 (경로 합 중 최대값 구하기)
 arr=[
     [2,5,7],
     [8,4,-8],
@@ -59,7 +133,7 @@ dfs(0,0) # level sum
 print(Max)
 
 ###########################
-# dfs 심화 2(완전탐색)
+# dfs 심화 2(완전탐색) (취객 3 방향으로만 가기)
 # 그림 2 참조
 arr = [
     [3,2,4,1],
