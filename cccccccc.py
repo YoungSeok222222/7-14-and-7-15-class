@@ -75,20 +75,24 @@ path = [0] * len(arr)
 
 def dfs(lv):
     global sum, cnt
+    sum = 0
+    for i in range(lv):
+        sum += path[i]
 
-    if lv ==len(arr):
+    if sum >= 10 and 20 >= sum:
+        cnt += 1
+        print(sum,path)
+
+    if lv == len(arr):
         return
 
 
     for i in range(len(arr)):
         if lv > 0 and path[lv-1] >= arr[i]: continue
         path[lv] = arr[i]
-        sum += path[i]
-        if 10 <= sum <= 20:
-            cnt += 1
-            print(sum,path)
         dfs(lv+1)
-        sum -= path[i]
+        path[lv] = 0
+
 
 dfs(0)
 print(cnt)
