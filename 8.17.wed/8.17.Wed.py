@@ -54,3 +54,4 @@ def abc(level,start):
     for i in range(start,4):
         path[level]=arr[i]
         abc(level+1,i)
+abc(0,0)

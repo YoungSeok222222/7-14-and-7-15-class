@@ -1,20 +1,97 @@
-n = int(input())
-members= [0,1,2,3,4,5,6]
-company =[list(map(int,input().split())) for _ in range(7)]
+
+##############################################
+
+#
+# result = [list(map(int,input().split())) for _ in range(3)]
+# Max = result[0]
+#
+# for i in range(len(result)-1):
+#     if len(Max) > len(result[i+1]):
+#        Max = i
+#
+#     elif len(Max) < len(result[i+1]):
+#         Max = i+1
+#
+#     else:
+#         for j in range(len(result[i])):
+#             if Max[j] > result[i+1][j]:
+#                 Max = Max
+#                 break
+#             elif Max[j] == result[i+1][j]: continue
+#             else:
+#                 Max = result[i+1]
+#                 break
+#
+# for p in Max:
+#     print(p,end='')
+
+##################
+# arr = list(input())
+# n = int(input())
+# path = [0] * n
+# def dfs(lv):
+#     if lv == n:
+#         for i in range(lv):
+#             print(path[i],end='')
+#         print()
+#         return
+#
+#     for i in range(len(arr)):
+#         path[lv] = arr[i]
+#         dfs(lv+1)
+#
+# dfs(0)
+#
+
+########################
+# name = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+#
+# n = int(input())
+# result = [list(input()) for _ in range(n)]
+# path = [0] * 4
+# cnt = 0
+#
+# def dfs(lv):
+#     global cnt
+#     if lv ==4:
+#         cnt += 1
+#         if path not in result: return
+#         else:
+#             print(cnt)
+#         return
+#
+#     for i in range(len(name)):
+#         path[lv] = name[i]
+#         dfs(lv+1)
+# dfs(0)
+
+##############################
+
+arr = list(map(int,input().split()))
+
+sum = 0
+cnt = 0
+path = [0] * len(arr)
+
+def dfs(lv):
+    global sum, cnt
+
+    if lv ==len(arr):
+        return
 
 
-boss = 0
-boss_index = 0
-under = []
+    for i in range(len(arr)):
+        if lv > 0 and path[lv-1] >= arr[i]: continue
+        path[lv] = arr[i]
+        sum += path[i]
+        if 10 <= sum <= 20:
+            cnt += 1
+            print(sum,path)
+        dfs(lv+1)
+        sum -= path[i]
 
-for x in range(7):
-    if company[0][x] == 1:
-        under.append(x)
-print(under)
+dfs(0)
+print(cnt)
 
-for y in range(5):
-    boss = 0
-    for x in range(5):
-        if company[y][x] == 1:
-            boss += 1
-    if
+
+
