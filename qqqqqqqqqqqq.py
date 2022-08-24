@@ -1,32 +1,22 @@
-n = ["A","B","C","D"]
-arr = [list(input()) for _ in range(4)]
-arr2 = [
-    ["A","B","C","D"],
-    ["B","B","A","B"],
-    ["C","B","A","C"],
-    ["B","A","A","A"],
-]
-
-def treasure(j):
-    cnt = 0
-    for y in range(4):
-        for x in range(4):
-            if n[j] == arr[y][x] and arr[y][x] == arr2[y][x]:
-                cnt +=1
-    return cnt
-
-
-count = [0] * 4
-Max = 0
-for j in range(4):
-    ret = treasure(j)
-    count[j] = ret
-
-
-index = 0
-for p in range(1,len(count)):
-    if count[index] < count[p]:
-        index = p
-
-
-print(n[index])
+for t in range(10):
+    dump = int(input())
+    arr = list(map(int,input().split()))
+    min, max = 9999, 0
+    max_idx, min_idx = 0,0
+    for j in range(dump):
+        for i in range(len(arr)):
+            if arr[i] >= max:
+                max = arr[i]
+                max_idx = i
+            if arr[i] <= min:
+                min = arr[i]
+                min_idx = i
+        print(max, min)
+        max -= 1
+        min += 1
+    print(f"#{t+1} {max -min}")
+#
+# a = 10
+# b = a
+# b -= 1
+# print(a,b)
