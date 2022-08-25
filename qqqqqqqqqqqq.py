@@ -1,22 +1,35 @@
-for t in range(10):
-    dump = int(input())
-    arr = list(map(int,input().split()))
-    min, max = 9999, 0
-    max_idx, min_idx = 0,0
-    for j in range(dump):
-        for i in range(len(arr)):
-            if arr[i] >= max:
-                max = arr[i]
-                max_idx = i
-            if arr[i] <= min:
-                min = arr[i]
-                min_idx = i
-        print(max, min)
-        max -= 1
-        min += 1
-    print(f"#{t+1} {max -min}")
+n = int(input())
+arr = list(map(int,input().split()))
+result = []
+
+
+for i in range(len(arr)-1):
+    if i < 3:
+        result.append(arr[i])
+    elif result[-1] == result[-2] and result[-1] == arr[i]: continue
+    else:
+        result.append(arr[i])
+
+print(result)
+
 #
-# a = 10
-# b = a
-# b -= 1
-# print(a,b)
+
+
+
+
+
+
+
+
+
+
+
+# result = []
+# for i in range(len(arr)):
+#     result.append(arr[i])
+#     if result.count(arr[i]) > 2:
+#         result.pop(i)
+#         result.pop(i-1)
+#         result.pop(i-2)
+#
+# print(result)
