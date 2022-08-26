@@ -1,35 +1,23 @@
-n = int(input())
-arr = list(map(int,input().split()))
-result = []
+T = int(input())
+for t in range(T):
+    N = int(input())
+    bus = [list(map(int,input().split())) for _ in range(N)]
+    bus_stop = [0] * 5001
 
+    p = int(input())
 
-for i in range(len(arr)-1):
-    if i < 3:
-        result.append(arr[i])
-    elif result[-1] == result[-2] and result[-1] == arr[i]: continue
-    else:
-        result.append(arr[i])
+    idx = []
+    for i in range(p):
+        idx.append(int(input()))
 
-print(result)
-
-#
-
-
-
-
-
-
-
-
+    for i in bus:
+        for j in range(i[0],i[1]+1):
+            bus_stop[j] += 1
+    print(f"#{t+1}",end=' ')
+    for x in idx:
+        print(bus_stop[x],end=' ')
+    print()
+    #
 
 
 
-# result = []
-# for i in range(len(arr)):
-#     result.append(arr[i])
-#     if result.count(arr[i]) > 2:
-#         result.pop(i)
-#         result.pop(i-1)
-#         result.pop(i-2)
-#
-# print(result)
