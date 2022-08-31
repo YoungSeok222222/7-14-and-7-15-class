@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <p>안녕하십니까 {{name}} 입니다.</p>
+    <p>오늘의 메뉴는 {{lunch}}입니다.</p>
+    <p>점심1: {{lunch.0}}</p>
+    <p>점심2: {{lunch.1}}</p>
+    <p>점심3: {{lunch.2}}</p>
+    <p>점심4: {{lunch.3}}</p> 
+    <p>넘겨 받은 단어는:{{word}}</p>
+    <p>flag는 {{flag}}</p>
+
+    {% if flag == 0 %}
+        flag는 0입니다.
+    {% elif flag == 1 %}
+        flag는 1입니다. 
+    {% else %}
+        flag는 0과 1 이 아닙니다.
+    {% endif %}
+
+    {% for l in lunch  %}
+        <p> 리스트: {{l}} </p>
+    {% endfor %}
+    <a href="/throw/">throw</a>
+{% endblock content %}
+    
