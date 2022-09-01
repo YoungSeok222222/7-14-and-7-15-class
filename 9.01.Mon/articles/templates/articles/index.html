@@ -1,0 +1,33 @@
+ {% extends 'base.html' %}
+
+   {% block content %}
+      <h1>상속쓰</h1>
+      <p>치렐루야~ {{ name }}!!</p>
+      <hr>
+      <p>전체 리스트 출력</p>
+      <p>과일 리스트: {{ fruit_list }}</p>
+      <p>싫어하는 과일 리스트 {{ hate }}</p>
+      <hr>
+      {% for fruit in fruit_list %}
+      {% endfor %}
+      <hr>
+
+      <p>싫어하는 과일 출력 안 하기</p>
+      {% for fruit in fruit_list %}
+         {% if fruit not in hate %}
+            <p>{{fruit}}</p>
+        
+         {% endif %}
+      {% endfor %}
+      <hr>
+
+      <p>3글자 이하인 과일만 출력하기</p>
+      {% for fruit in fruit_list %}
+         {% if fruit|length > 1 %}
+            <p>{{fruit|truncatechars:3}}</p> 
+            {% endif %}
+      {% endfor %}
+         
+
+
+   {% endblock content %}

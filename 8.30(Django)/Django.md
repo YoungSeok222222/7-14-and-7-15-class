@@ -254,7 +254,7 @@ WWW(World Wide Web)
 
 |장고 설치 과정 명령어| 내용 |
 |:--:|:--:|
-|ls| 잘 모름|
+|ls| 현재 폴더에 존재하는 파일 표시|
 python -m venv venv| 가상환경 폴더 생성  
 source venv/Scripts/activate| 가상환경 활성화
 pip list| 설치된 패키지 리스트|

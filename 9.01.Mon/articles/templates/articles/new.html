@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>여기는 New 입니다</h1>
+    <form action="{% url 'articles:create' %}" method="POST">
+        {% csrf_token %}
+        
+    {% comment %} DB에서 필수적으로 필요한 내용: title, content {% endcomment %}
+        <label for="title">Title</label>
+        <input type="text" name="title"> 
+        
+        
+         <label for="content">Content: </label>
+         <textarea name="content"></textarea>
+    
+        <input type="submit">
+    </form> 
+
+
+    <a href="{% url 'articles:main' %}">[BACK]</a>
+{% endblock content %}
