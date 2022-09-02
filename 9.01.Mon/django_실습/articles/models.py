@@ -10,7 +10,7 @@ class Article(models.Model):
 
 
 
-# 구조 설명서 blueprint(models.py) -> 실제 설계도(migrations) -> 반영(migrate)
+# 구조 설명서 == blueprint(models.py) -> 실제 설계도(migrations) -> 반영(migrate)
 
 
 # Article 클래스 호출 시 어떻게 출력할 것인가

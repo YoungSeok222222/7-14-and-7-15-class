@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {# Bootstrap d-flex 적용 코드 #}
+    <div class="d-flex justify-content-between">
+        <h1>Main Page</h1>
+        <a href="{% url 'articles:new' %}">
+            <button type="button" class="btn btn-primary mt-2">NEW</button>
+        </a>
+    </div>
+    <hr>
+    {# for 문 돌면서 article 하나하나 정보 출력 #}
+    {% for article in articles %}
+        <p>글 번호 : {{ article.pk }}</p>
+        <p>글 제목 : {{ article.title }}</p>
+        <p>글 내용 : {{ article.content }}</p>
+        {# a + button 사용 버전 #}
+        <a href="{% url 'articles:detail' article.pk %}"><button type="button" class="btn btn-info">Detail</button></a>
+        <a href="{% url 'articles:edit' article.pk %}"><button type="button" class="btn btn-success">Update</button></a>
+        <a href="{% url 'articles:delete' article.pk %}"><button type="button" class="btn btn-danger">Delete</button></a>
+        <hr>
+    {% endfor %}
+{% endblock content %}

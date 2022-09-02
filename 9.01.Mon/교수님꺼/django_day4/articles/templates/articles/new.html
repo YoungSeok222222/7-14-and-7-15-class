@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>NEW</h1>
+      {# articles:create 에 POST 메서드로 요청 #}
+      <form action="{% url 'articles:create' %}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" name="title">
+        </div>
+        <div class="mb-2">
+          <label for="content" class="form-label">Content</label>
+          <textarea class="form-control" name="content"></textarea><br>
+        </div>
+        <button type="submit" class="btn btn-primary">글 작성하기</button>
+        <a href="{% url 'articles:main' %}"><button type="button" class="btn btn-secondary">BACK</button></a>
+      </form>
+{% endblock content %}
