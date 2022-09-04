@@ -1,38 +1,33 @@
-N = int(input())
+arr = [["A","B","C","E","F","G"],["H","I","J","K","L","M"],["N","O","P","Q","R","S"]]
+copy_arr = [["A","B","C","E","F","G"],["H","I","J","K","L","M"],["N","O","P","Q","R","S"]]
+bung = list(input())
 
-arr = [list(map(int,input().split())) for _ in range(N)]
-farm = [[0]*3 for _ in range(3)]
 
-
-crop = []
-for i in range(len(arr)):                        # 농작물 따로 보관
-    crop.append(int(str(arr[i].pop())))
-
-for i in range(len(arr)):                        # 농작물 농장에 심기
-    farm[arr[i][0]][arr[i][1]] = crop[i]
-# print(farm)
-
-t = int(input())
-typhoon = list(map(int,input().split()))         # 태풍 발생
-
-for p in typhoon:
-    for y in range(3):
-        for x in range(3):
-            if farm[y][x] ==0: continue
-            elif farm[y][x]%10 > p:              # 태풍에 유실
-                farm[y][x] -= p
+def bung_A(y,x,b):
+    direct_y, direct_x = [-1,1,0,0,0], [0,0,-1,1,0]
+    if arr[y][x] != b:
+        return 0
+    else:
+        for i in range(5):
+            dy,dx = direct_y[i] + y, direct_x[i] + x
+            if dy<0 or dx<0 or dy>2 or dx>5: continue
             else:
-                farm[y][x] = farm[y][x] // 10
+                if arr[dy][dx] == "#":
+                     arr[dy][dx]  = copy_arr[dy][dx]
+                else:
+                    arr[dy][dx] = "#"
+        return 1
 
-result = []
+idx = 0
+for b in bung:
+    for y in range(3):
+        for x in range(6):
+            ret = bung_A(y,x,b)
 
 for y in range(3):
-    for x in range(3):
-        if farm[y][x]:
-            result.append(str(farm[y][x]))
-
-print(len(''.join(result)))
+    print(*arr[y],sep='')
 
 
 
-# arr = [input() for _ in range(N)]
+
+
