@@ -5,6 +5,6 @@ def pre(n):
         pre(2*n+1)
 
 tree = [0,'A', 'B','C','D','E','F']     # 완전이진트리
-size = len(tree) - 1                    # 마지막 정저 ㅁ번호
+size = len(tree) - 1                    # 마지막 정점 번호
 
 pre(1)
