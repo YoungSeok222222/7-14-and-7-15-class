@@ -1,33 +1,42 @@
-arr = [["A","B","C","E","F","G"],["H","I","J","K","L","M"],["N","O","P","Q","R","S"]]
-copy_arr = [["A","B","C","E","F","G"],["H","I","J","K","L","M"],["N","O","P","Q","R","S"]]
-bung = list(input())
+N = int(input())
+
+lst = [
+    ["A","B","C"],
+    ["D","E","F"],
+    ["G","H"],
+    ["I","J"]
+]
+arr = [0] * 100
+for i in range(len(lst)):
+    for j in range(len(lst[i])):
+        if j==0: continue
+        arr[ord(lst[i][j])] = lst[i][0]
+
+print(arr) 
+
+def findboss(member):
+    if arr[ord(member)] == 0: return member
+    ret = findboss(arr[ord(member)])
+    arr[ord(member)] = ret
+    print(ret)
+    return ret
 
 
-def bung_A(y,x,b):
-    direct_y, direct_x = [-1,1,0,0,0], [0,0,-1,1,0]
-    if arr[y][x] != b:
-        return 0
-    else:
-        for i in range(5):
-            dy,dx = direct_y[i] + y, direct_x[i] + x
-            if dy<0 or dx<0 or dy>2 or dx>5: continue
-            else:
-                if arr[dy][dx] == "#":
-                     arr[dy][dx]  = copy_arr[dy][dx]
-                else:
-                    arr[dy][dx] = "#"
-        return 1
-
-idx = 0
-for b in bung:
-    for y in range(3):
-        for x in range(6):
-            ret = bung_A(y,x,b)
-
-for y in range(3):
-    print(*arr[y],sep='')
+def union(a,b):
+    global cnt
+    a_boss, b_boss = findboss(a), findboss(b)
+    if a_boss == b_boss: return
+    print(a_boss,b_boss)
+    arr[ord(b_boss)] = a_boss
+    
 
 
+mix = [input().split() for _ in range(N)]
+for i in range(len(mix)):
+    union(mix[i][0],mix[i][1])
 
+print(arr)
+arr = set(arr)
+print(f"{len(arr)-1}개")
 
 
