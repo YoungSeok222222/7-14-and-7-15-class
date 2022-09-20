@@ -1,43 +1,18 @@
 T = int(input())
 for tc in range(1,T+1):
     N,lst = input().split()
-    dic = {'A':10, 'B':11, 'C':12, 'D':13,'E':14, 'F':15}
+    dic = {
+        '0':'0000','1':'0001', '2':'0010', '3':'0011', '4':'0100', '5':'0101', '6':'0110', '7':'0111', '8':'1000', '9':'1001', 
+        'A': '1010', 'B':'1011', 'C':'1100', 'D':'1101','E':'1110', 'F':'1111'
+        }
     N,lst =int(N), list(lst)
     answer = []
-    for i in range(N):
-        if lst[i] in dic:
-            lst[i] = dic.get(lst[i])
-        else:
-            lst[i] = int(lst[i])
+    for i in range(N):                #  47FE
+        lst[i] = dic.get((lst[i]))
+        answer.append((lst[i]))
 
-    def isb(j):
-        if j >8: ret = 0
-        else: ret = 1
-        result = []
-        while True:
-            result.append(j % 2)
-            j = j //2
-            if j//2 ==0:
-                result.append(j)
-                if ret:
-                    result.append(j//2)
-                return result   
-     
-            
-
-    for j in lst:
-        result=isb(j)
-        for u in range(3,-1,-1):
-            answer.append(result[u])
-        
     print(f"#{tc}",end=' ')
     print(*answer,sep='')
- 
-    
-    # for j in range(N):
-    #     result.append(int(format(lst[j],'b')))
-    
-    # print(*result,sep='')
     # 0111 1001 1110 0001 0010
     
 '''
@@ -52,8 +27,5 @@ E = 14 = 1110
 '''
 
 
-100011111111110
-10011111111110
 
-print(hex(18430))
 

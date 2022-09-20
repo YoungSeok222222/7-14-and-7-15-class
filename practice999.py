@@ -1,27 +1,51 @@
-arr = [[4,7,1,8],[3,5,9,2],[5,9,5,9],[1,2,9,7]]
+# 0,0의 탱크를 가지고 왕자(3,5) 구출하기 
+from collections import deque
 
-# 1 2 8 9 7
-# 1 2 9 9 9
-# 1 6 4 2 7
-N,M=map(int,input().split())
-arr=[list(map(int,input().split())) for _ in range(N)]
-Max=int(-21e8)
-dy,dx=0,0
+N,M = 4, 6
+lst = [ # 4 6 
+    [2,0,1,1,1,1],
+    [0,0,1,0,0,1],
+    [0,0,1,0,1,1],
+    [0,0,1,0,1,0]
+]
+used = [[0]*6 for _ in range(4)]
 
-def getSum(y,x):  # 전달받은 좌표값 기준으로 sum 구한 후
-    sum=0
-    for i in range(2):
-        for j in range(3):
-            sum+=arr[i+y][j+x]
-    return sum  # 구한 sum 리턴
+move = [
+    [-1,0],
+    [1,0],
+    [0,-1],
+    [0,1]
+]
+# 시작점, 도착점 정의
+st_y, st_x, ed_y, ed_x = 0, 0, 3, 5
+
+# 큐에 시작점, 레벨, 총알 등록
+q = deque()
+q.append([st_y,st_x,0,2])
+
+# used 배열에 시작점 등록
+used[st_y][st_x] = True
+
+while q:
+    yy,xx,lv,bullet = q.popleft()
+    print(yy,xx,lv,bullet)
+    if yy==ed_y and xx==ed_x:
+        print(lv)
+        break
+    for i in range(4):
+        dy,dx = yy+move[i][0], xx+move[i][1]
+        if 0<=dy<N and 0<=dx<M:
+            if not used[dy][dx]:
+                if lst[dy][dx]==0:
+                    q.append([dy,dx,lv+1,bullet])
+                    used[dy][dx] = 1
+                else:
+                    if bullet > 0:
+                        used[dy][dx] = 1
+                        q.append([dy,dx,lv+1,bullet-1])
 
 
-for i in range(2):
-    for j in range(3):
-        ret=getSum(i,j)  # 0,0 부터 1,2 까지 좌표값 전달
-        if ret>Max: # 리턴받은값 갱신
-            Max=ret
-            dy=i
-            dx=j
-print(Max)  # 최대값과   / Max 값 51
-print(dy,dx) # 그 좌표값 까지 출력   / 0 2 (좌표)
+
+        
+
+
