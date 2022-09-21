@@ -160,3 +160,30 @@ dfs(0,0)
 print(Max)
 
 # 8번 레드마운틴
+n = int(input())
+arr = [list(map(int,input().split())) for _ in range(n)]
+check = [['']*n for _ in range(n)]
+used = [0] * 3
+ret = 0
+
+def dfs(y,x):
+    global ret
+    if y==n-1 and x==n-1: 
+        ret = 1
+        return 
+
+    directy,directx = [-1,1,0,0], [0,0,-1,1]
+    for i in range(4): # 하 좌 우 탐색
+        dy,dx = y+directy[i], x+directx[i]
+        if 0<=dy<n and 0<=dx<n :
+            if arr[dy][dx] == 0 and check[dy][dx]!=0:
+                check[y][x] = 0
+                check[dy][dx] = 0
+                dfs(dy,dx)
+                check[y][x] =''
+dfs(0,0) # y,x
+if ret:
+    print("가능")
+else:
+    print("불가능")
+
