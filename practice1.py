@@ -1,30 +1,33 @@
-T = int(input())
-for tc in range(1,T+1):
-    N,lst = input().split()
-    dic = {
-        '0':'0000','1':'0001', '2':'0010', '3':'0011', '4':'0100', '5':'0101', '6':'0110', '7':'0111', '8':'1000', '9':'1001', 
-        'A': '1010', 'B':'1011', 'C':'1100', 'D':'1101','E':'1110', 'F':'1111'
-        }
-    N,lst =int(N), list(lst)
-    answer = []
-    for i in range(N):                #  47FE
-        lst[i] = dic.get((lst[i]))
-        answer.append((lst[i]))
+# from collections import deque
 
-    print(f"#{tc}",end=' ')
-    print(*answer,sep='')
-    # 0111 1001 1110 0001 0010
-    
-'''
-47FE = 4*1000+ 7*100+15*10+14*1 
-이걸 2진수로 바꾸려면
-47EF = 
-4 = 0100
-7 = 1111
-F = 15 = 1111
-E = 14 = 1110
-0100111111101111임
-'''
+
+# lst = [list(input()) for _ in range(8)]
+# move = [[-1,0],[1,0],[0,-1],[0,1]]
+# def bfs(y,x,n):
+#     q = deque()
+#     q.append([y,x,0])
+#     visit = [[0]*9 for _ in range(8)]
+#     visit[y][x] = 1
+
+#     while q:
+#         y,x,cnt = q.popleft()
+#         if n==1 and lst[y][x]==3: 
+
+
+#         for i in range(4):
+#             dy,dx = y+move[i][0], x+move[i][1]
+#             if 0<=dy<8 and 0<=dx<9 and lst[y][x]=="#":
+#                 lst[dy][dx] = 3
+#                 # visit[dy][dx] = 1
+#                 q.append([dy,dx,cnt+1])
+# result = []
+# check = [[0]*9 for _ in range(8)]
+# for i in range(8):
+#     for j in range(9):
+#         if lst[i][j]=="#":
+#             bfs(i,j,0)
+#             bfs(i,j,1)
+
 
 
 
