@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>EDIT</h1>
+    <hr>
+    <div class="d-flex">
+        <form action="{% url 'movies:update' movie.pk %}" method="POST">
+            {% csrf_token %}
+            <div class= 'mb-3'>
+                <label for="title" class='form_label'>Title</label>
+                <input type="text" value="{{ movie.title }}" class='form-control-sm' id='title' name='title'>
+            </div>
+
+            <div class='mb-3'>
+                <label for="audience" class='form-label'>Audience</label>
+                <input type="number" value="{{ movie.audience }}"class='form-control-sm' id='audience' name='audience'>
+            </div>
+
+            <div class='mb-3'>
+                <label for="release_date" class='form-label'>RELEASE_DATE</label>
+                <input type="date" value="{{movie.release_date|date:'Y-m-d'}}" class='form-control-sm' id='release_date' name='release_date'>
+            </div>
+
+          {% comment %} <div class="d-flex">
+                <div class="dropdown me-1">
+                <label for="genre">Genre</label>  
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+                    장르
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="">코미디</a></li>
+                    <li><a class="dropdown-item" href="#">액션</a></li>
+                    <li><a class="dropdown-item" href="#">로맨스</a></li>
+                    <li><a class="dropdown-item" href="#">드라마</a></li>
+                    <li><a class="dropdown-item" href="#">호러</a></li>
+                </ul>
+                </div>
+          </div> {% endcomment %}
+            <br> 
+        <div class='mb-3'>
+            <label for="genre">장르</label>
+            <select name="genre" id="">
+                {% for gen in genres %}
+                    {% if gen == movie.genre %}
+                        <option value="{{gen}}" selected>{{gen}}</option>
+                    {% else %}
+                        <option value="{{gen}}">{{gen}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+            <div class="mb-3">
+                <label for="score" class='form-label'>score</label>
+                <input type="number" value="{{ movie.score }}"step="0.1" class='form-control-sm' id='score' name='score'>
+            
+            </div>
+
+            <div class="mb-3">
+                <label for="poster_url" class='form-label'>POSTER_URL</label>
+                <input type="link" value="{{ movie.poster_url }}"class='form-control-sm' id='poster_url' name='poster_url'>
+            
+            </div>
+            
+            <div class="mb-3">
+                <label for="description" class='form-label'>DESCRIPTION</label>
+                <input type="text" value="{{ movie.description }}"class='form-control-lg' id='description' name='description'>
+            </div>
+
+        <input type="reset" value="Reset" >
+        <input type="submit" value="Submit" >
+    </div>
+    <hr>
+
+    <a href="{% url 'movies:index' %}">BACK</a>
+        </form>
+            
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+
+

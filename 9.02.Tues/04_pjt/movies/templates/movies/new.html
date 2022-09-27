@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>NEW</h1>
+    <hr>
+    <div class="d-flex">
+        <form action="{% url 'movies:create' %}" method="POST">
+            {% csrf_token %}
+            <div class= 'mb-3'>
+                <label for="title" class='form_label'>Title</label>
+                <input type="text" class='form-control-sm' id='title' name='title'>
+            </div>
+
+            <div class='mb-3'>
+                <label for="audience" class='form-label'>Audience</label>
+                <input type="number" class='form-control-sm' id='audience' name='audience'>
+            </div>
+
+            <div class='mb-3'>
+                <label for="release_date" class='form-label'>RELEASE_DATE</label>
+                <input type="date" class='form-control-sm' id='release_date' name='release_date'>
+            </div>
+
+          {% comment %} <div class="d-flex">
+                <div class="dropdown me-1">
+                <label for="genre">Genre</label>  
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+                    장르
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="">코미디</a></li>
+                    <li><a class="dropdown-item" href="#">액션</a></li>
+                    <li><a class="dropdown-item" href="#">로맨스</a></li>
+                    <li><a class="dropdown-item" href="#">드라마</a></li>
+                    <li><a class="dropdown-item" href="#">호러</a></li>
+                </ul>
+                </div>
+          </div> {% endcomment %}
+            <br> 
+        <div class='mb-3'>
+            <label for="genre">장르</label>
+            <select name="genre" id="">
+                <option value="코미디">코미디</option>
+                <option value="액션">액션</option>
+                <option value="로맨스">로맨스</option>
+                <option value="드라마">드라마</option>
+                <option value="호러">호러</option>
+            </select>
+        </div>
+            <div class="mb-3">
+                <label for="score" class='form-label'>score</label>
+                <input type="number" step="0.1" class='form-control-sm' id='score' name='score'>
+            
+            </div>
+
+            <div class="mb-3">
+                <label for="poster_url" class='form-label'>POSTER_URL</label>
+                <input type="link" class='form-control-sm' id='poster_url' name='poster_url'>
+            
+            </div>
+            
+            <div class="mb-3">
+                <label for="description" class='form-label'>DESCRIPTION</label>
+                <input type="text" class='form-control-lg' id='description' name='description'>
+            </div>
+
+        <input type="submit" value="Submit" >
+    </div>
+    <hr>
+
+    <a href="{% url 'movies:index' %}">BACK</a>
+            
+
+
+
+
+
+
+
+
+    </form>
+{% endblock content %}
