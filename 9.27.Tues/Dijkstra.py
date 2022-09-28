@@ -87,15 +87,15 @@ def dijkstra(st):
     result[st] = 0                  # 그 다음 부터는 heapq에서 최소 비용을 다음 경유지로 선택
 
     while heap:
-        cost,idx=heapq.heappop(heap)    # 시작점에서 경유지까지 비용 and idx = 선택한 경유지
+        cost,via=heapq.heappop(heap)    # 시작점에서 경유지까지 비용, via = 선택한 경유지
 
-        if result[idx]<cost: continue   # result에서의 업데이트 되어있는 (시작->경유지 값) 비용  vs (방금 뽑은 시작->경유지) 비용
+        if result[via]<cost: continue   # result에서의 업데이트 되어있는 (시작->경유지 값) 비용  vs (방금 뽑은 시작->경유지) 비용
 
-        for i in arr[idx]:    # 모든 정점에 대해서(경유지에서 도착할 수 있는 정점을 비교)
-            cost=cost+i[1]    # cost = 시작-> 경유지 비용 + 경유지에서 도착점까지 최소비용
-            if cost<result[i[0]]:   
-                result[i[0]] = cost
-                heapq.heappush(heap,(cost,i[0]))
+        for i in arr[via]:    # 모든 정점에 대해서(경유지에서 도착할 수 있는 정점을 비교)
+            money=cost+i[1]    # money = 시작-> 경유지 비용 + 경유지에서 도착점까지 최소비용
+            if money<result[i[0]]:   
+                result[i[0]] = money
+                heapq.heappush(heap,(money,i[0]))
 
 dijkstra(st)
-
+print(result)
