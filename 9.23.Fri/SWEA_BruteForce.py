@@ -66,3 +66,35 @@ for tc in range(1,T+1):
 
 
 # 1249 [S/W 문제해결 응용] 4일차 - 보급로
+from collections import deque
+
+def bfs(y,x):
+    q = deque()
+    q.append([y,x])
+
+    while q:
+        y,x = q.popleft()
+        for i in range(4):
+            dy,dx = y+move[i][0], x+move[i][1]
+            if 0<=dy<N and 0<=dx<N:                     # 배열 안에 있고
+                if acc[dy][dx] == -1:                   # acc 배열이 초기값 -1이라면
+                    acc[dy][dx] = acc[y][x]+lst[dy][dx] # 원본 lst의 dy,dx 값과 acc 배열 y,x를 더한 값을 acc에 삽입
+                    q.append([dy,dx])
+                elif acc[dy][dx] != -1 and acc[y][x] + lst[dy][dx] < acc[dy][dx]:   # 만약 acc가 초기 값 -1이 아니고(이미 갱신된 상태고), 갱신하려는 acc[dy][dx]가 작으면
+                    acc[dy][dx] = acc[y][x] + lst[dy][dx]                           # 다시 갱신
+                    q.append([dy,dx])
+            
+move = [[-1,0],[1,0],[0,-1],[0,1]]
+directy = [-1,1,0,0]
+directx = [0,0,-1,1]
+T = int(input())
+for tc in range(1,T+1):
+    N = int(input())
+    lst = [list(map(int,input())) for _ in range(N)]
+    acc = [[-1]*N for _ in range(N)]                    # 원본 배열과 비교할 배열 하나 -1을 넣어 생성
+    acc[0][0] = lst[0][0]                               # 첫 0,0 좌표에 lst[0][0] 값 삽입
+    bfs(0,0)                                            # bfs에 0,0부터 시작
+    # for g in acc:
+    #     print(*g)
+    print(f"#{tc} {acc[-1][-1]}")
+   
