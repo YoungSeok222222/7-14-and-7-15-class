@@ -64,6 +64,31 @@ for tc in range(1,T+1):
 
 # 2382 [모의 SW 역량테스트] 미생물 격리
 
+# 1486 장훈이의 높은 선반
+def dfs(Sum,st):
+    global Min,used
+    if Sum >= B: 
+        Min = min(Min,abs(Sum-B))
+        return 
+
+    for i in range(st,N):               # 조합이기 때문에 st 넣고 아래에서 다음 dfs 들어갈때 +1
+        if used[i]==0:
+            used[i] = 1
+            dfs(Sum+lst[i],i+1)         # 268 61 201 이나 61 268 201이나 똑같은 조합이기 때문에 보지않고 넘어간다.
+            used[i] = 0 
+
+T = int(input())
+for tc in range(1,T+1):
+    N,B = map(int,input().split())       # 10(원소 개수) 2780(책장 높이)
+    lst = list(map(int,input().split())) # 예를들어 268 61 201 535 464 168 491 275 578 153
+    lst.sort(reverse=True)
+    used = [0] * N
+    Min = 21e8
+    if len(lst)==1:
+        Min = sum(lst)
+    else:
+        dfs(0,0)
+    print(f"#{tc} {Min}") 
 
 # 1249 [S/W 문제해결 응용] 4일차 - 보급로
 from collections import deque
@@ -97,4 +122,3 @@ for tc in range(1,T+1):
     # for g in acc:
     #     print(*g)
     print(f"#{tc} {acc[-1][-1]}")
-   

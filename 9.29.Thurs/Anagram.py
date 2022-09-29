@@ -3,9 +3,9 @@ arr1=input()
 arr2=input()
 board1=[0]*26
 board2=[0]*26
-for i in (arr1):
+for i in arr1:
     board1[ord(i)-ord('a')]+=1
-for i in (arr2):
+for i in arr2:
     board2[ord(i) - ord('a')] += 1
     
 flag=1
@@ -27,7 +27,7 @@ else: print('아나그램 아님')
 #================================================
 # 최대 아나그램 만들기 위해 빼야 하는 문자 갯수
 a='aabbc'
-b='eebbff'
+b='eebbffa'
 
 dat=[0]*26
 for i in a:
