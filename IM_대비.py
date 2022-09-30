@@ -81,6 +81,42 @@ for testcase in range(1,T+1):
             if arr[i][j] == 'H':
                 cnt += 1
     print(f'#{testcase} {cnt}')
+#======================================================================
 
-
+# 11646 중력
+T = int(input())
+for tc in range(1,T+1):
+    N = int(input())
+    lst = list(map(int,input().split()))
+    Max = 0                             # 우측 블록에 작은 값이 가장 많이 있는 블록이 결국 낙차가 가장 크다
+    for i in range(N):
+        cnt = 0
+        for j in range(i+1,N):          
+            if lst[i]>lst[j]:  cnt += 1 # 만약 기준 블록보다 우측 블록이 작다면 cnt += 1
+        Max = max(Max,cnt)
+        # print(Max)
+    print(f"#{tc} {Max}")
     
+
+# 6190 정곤이의 단조 증가하는 수
+def danjo(gop):
+    gop = str(gop)
+    if len(gop)==1: return 1
+    for i in range(len(gop)-1):
+        if gop[i] > gop[i+1]: return 0
+    else:
+        return 1
+
+T = int(input())
+for tc in range(1,T+1):
+    N = int(input())
+    lst = list(map(int,input().split()))
+    Max = 0
+    for i in range(N):
+        for j in range(i+1,N):
+            gop = lst[i] * lst[j]
+            ret = danjo(gop)
+            if ret:
+                Max = max(Max,gop)
+    if Max !=0: print(f"#{tc} {Max}")
+    else: print(f"#{tc} -1")

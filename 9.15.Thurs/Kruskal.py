@@ -31,17 +31,11 @@ lst = [list(input().split()) for _ in range(M)]
 lst.sort(key=lambda x: int(x[2]))
 arr = [0] * 200
 
-
-
-
 def findboss(member):
     if arr[ord(member)] == 0: return member
     ret = findboss(arr[ord(member)])
     arr[ord(member)] = ret
     return ret
-
-
-
 
 def union(a,b,i):
     global answer,cnt
@@ -50,9 +44,6 @@ def union(a,b,i):
     answer += int(lst[i][2])    # 비용 더하기
     cnt += 1                    # 간선의 개수 더하기
     arr[ord(b_boss)] = a_boss
-
-
-
 
 
 answer = 0 # 비용을 더할 변수

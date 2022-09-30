@@ -51,13 +51,12 @@ print(answer)
 
 
 # 교수님 풀이
-def solution(participant, completion):
-    participant.sort()
-    completion.sort()
+#완주하지 못한 선수 
+#Counter 를 사용한 정답 코드 입니다.
 
-    for i in range(len(completion)):
-        if completion[i]!=participant[i]:
-            return participant[i]
-    return participant[len(participant)-1]
+from collections import Counter
+def solution(participant, completion):
+    name=Counter(participant)-Counter(completion)
+    return list(name.items())[0][0]
 
 #=====================================================
