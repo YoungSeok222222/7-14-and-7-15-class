@@ -120,3 +120,15 @@ for tc in range(1,T+1):
                 Max = max(Max,gop)
     if Max !=0: print(f"#{tc} {Max}")
     else: print(f"#{tc} -1")
+
+# 2805 농작물 수확하기
+T = int(input())
+for tc in range(1,T+1):
+    N = int(input())
+    lst = [list(map(int,input())) for _ in range(N)]
+    ans = 0
+    md = N//2
+    for y in range(md+1):
+        for x in range(md-y,md+y+1):
+            ans += lst[y][x] + lst[N-y-1][x]
+    print(f"#{tc} {ans-sum(lst[md])}")
