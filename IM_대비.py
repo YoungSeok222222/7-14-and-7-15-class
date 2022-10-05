@@ -96,7 +96,7 @@ for tc in range(1,T+1):
         Max = max(Max,cnt)
         # print(Max)
     print(f"#{tc} {Max}")
-    
+#===========================================================
 
 # 6190 정곤이의 단조 증가하는 수
 def danjo(gop):
@@ -120,7 +120,7 @@ for tc in range(1,T+1):
                 Max = max(Max,gop)
     if Max !=0: print(f"#{tc} {Max}")
     else: print(f"#{tc} -1")
-
+#===================================================================
 # 2805 농작물 수확하기
 T = int(input())
 for tc in range(1,T+1):
@@ -130,5 +130,88 @@ for tc in range(1,T+1):
     md = N//2
     for y in range(md+1):
         for x in range(md-y,md+y+1):
-            ans += lst[y][x] + lst[N-y-1][x]
-    print(f"#{tc} {ans-sum(lst[md])}")
+            ans += lst[y][x] + lst[N-y-1][x]    # 정사각형 마름모 기준 위쪽 좌표값 + 아래쪽 좌표값
+    print(f"#{tc} {ans-sum(lst[md])}")          # 정가운데는 2번 더했기 때문에 다시 가운데 줄 전체를 한 번 빼준다.
+#========================================================================
+# 1258 [S/W 문제해결 응용] 7일차 - 행렬찾기
+from collections import deque
+def bfs(y,x):
+    q = deque()
+    visit[y][x] = 1
+    q.append([y,x])
+    while q:
+        y,x = q.popleft()
+        for i in range(4):
+            dy,dx = y+move[i][0], x+move[i][1]
+            if 0<=dy<N and 0<=dx<N and visit[dy][dx]==0 and lst[dy][dx]!=0:
+                visit[dy][dx] = 1
+                q.append([dy,dx])
+    return dy+1,dx
+
+T = int(input())
+move = [[-1,0],[1,0],[0,-1],[0,1]]
+for tc in range(1,T+1):
+    N = int(input())
+    lst = [list(map(int,input().split())) for _ in range(N)]
+    visit = [[0]*N for _ in range(N)]
+    cnt,ans = 0, []
+    for i in range(N):
+        for j in range(N):
+            if lst[i][j] !=0 and visit[i][j]==0:
+                cnt += 1
+                y,x = bfs(i,j)
+                ans.append([y-i,x-j])
+    ans.sort(key=lambda x: (x[0]*x[1],x[0]))
+    print(f"#{tc}",cnt,end=' ')
+    for g in ans:
+        print(*g,end=' ')
+    print()
+#====================================
+
+# 1220 Magnetic 
+for tc in range(1,11):
+    N = int(input())
+    lst = [list(map(int,input().split())) for _ in range(N)]
+    ans = 0
+    for y in range(N):
+        for x in range(N):
+            if lst[y][x] ==1:
+                for yy in range(y+1,N):
+                    if lst[yy][x]==2:
+                        lst[yy][x] = 9
+                        ans += 1
+                        break
+                    elif lst[yy][x]==9: break
+    print(f"#{tc} {ans}")
+    # for g in lst:
+    #     print(*g)
+'''
+7
+1 0 2 0 1 0 1
+0 2 0 0 0 0 0
+0 0 1 0 0 1 0
+0 0 0 0 1 2 2
+0 0 0 0 0 1 0
+0 0 2 1 0 2 1
+0 0 1 2 2 0 2
+'''
+
+# 1860 진기의 최고급 붕어빵
+# for i (N)
+# tmp(빵 개수) = (arr[i]//M 빵 개수) * K 초
+T = int(input())
+for tc in range(1,T+1):
+    # N: 사람 수, M시간마다 K개 붕어빵 만듬
+    N, M, K = map(int,input().split())
+    # 0초 이후에 손님들이 도착하는 시간
+    lst = list(map(int,input().split()))
+    lst.sort()
+    ans = 0
+    for i in range(N):
+        # 손님 도착 시간에 만들 수 있는 붕어빵의 수
+        tmp = (lst[i]//M)*K
+        # tmp -1: 현재 손님이 먹음, i: 이전 손님들이 먹은 수
+        if tmp-1-i < 0:
+            print(f"#{tc} Impossible")
+            break
+    else: print(f"#{tc} Possible")
