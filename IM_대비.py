@@ -120,45 +120,6 @@ for tc in range(1,T+1):
                 Max = max(Max,gop)
     if Max !=0: print(f"#{tc} {Max}")
     else: print(f"#{tc} -1")
-<<<<<<< HEAD
-
-# 백준 2578 빙고
-def bingo(j,n):
-    ans = 0
-    for y in range(5):
-        for x in range(5):
-            if lst[y][x] == j:
-                lst[y][x] = 0
-                break                
-    for y in range(5):
-        cnt1,cnt2 = 0,0
-        for x in range(5):
-            if lst[y][x] ==0: cnt1 += 1
-            if lst[x][y] ==0: cnt2 += 1
-        if cnt1==5: ans += 1
-        if cnt2==5: ans += 1
-
-    cnt3,cnt4,idx = 0,0,0
-    for y in range(4,-1,-1):
-        if lst[y][y]==0: cnt3 += 1
-        if lst[y][idx]==0: cnt4 += 1
-        idx += 1
-    if cnt3 ==5: ans += 1
-    if cnt4 ==5: ans += 1
-    return ans
-
-lst = [list(map(int,input().split())) for _ in range(5)]
-num = [list(map(int,input().split())) for _ in range(5)]
-n ,ret= 1, 0 
-for i in num:
-    if ret>=3: break
-    for j in i:
-        ret = bingo(j,n)
-        if ret >=3: 
-            print(n)
-            break
-        n += 1
-=======
 #===================================================================
 # 2805 농작물 수확하기
 T = int(input())
@@ -254,4 +215,104 @@ for tc in range(1,T+1):
             print(f"#{tc} Impossible")
             break
     else: print(f"#{tc} Possible")
->>>>>>> e96e7bee9cd61da58a2aca0f5cc517581665c5af
+
+# 9489 고대 유적
+def treasure():
+    Max = 0
+    for i in range(N):
+        c = 0
+        for j in range(M):
+            if lst[i][j]==1: c += 1
+            if lst[i][j]==0 or j==M-1:
+                Max = max(Max,c)
+                c = 0               
+    for x in range(M):
+        c = 0
+        for y in range(N):
+            if lst[y][x]==1: c +=1
+            if lst[y][x]==0 or y==N-1:
+                Max = max(Max,c)
+                c = 0
+    return Max
+T = int(input())
+for tc in range(1,T+1):
+    N,M = map(int,input().split())
+    lst = [list(map(int,input().split())) for _ in range(N)]
+    print(f"#{tc} {treasure()}")
+
+
+# 백준 2578 빙고
+def bingo(j,n):
+    ans = 0
+    for y in range(5):
+        for x in range(5):
+            if lst[y][x] == j:
+                lst[y][x] = 0
+                break                
+    for y in range(5):
+        cnt1,cnt2 = 0,0
+        for x in range(5):
+            if lst[y][x] ==0: cnt1 += 1
+            if lst[x][y] ==0: cnt2 += 1
+        if cnt1==5: ans += 1
+        if cnt2==5: ans += 1
+
+    cnt3,cnt4,idx = 0,0,0
+    for y in range(4,-1,-1):
+        if lst[y][y]==0: cnt3 += 1
+        if lst[y][idx]==0: cnt4 += 1
+        idx += 1
+    if cnt3 ==5: ans += 1
+    if cnt4 ==5: ans += 1
+    return ans
+
+lst = [list(map(int,input().split())) for _ in range(5)]
+num = [list(map(int,input().split())) for _ in range(5)]
+n ,ret= 1, 0 
+for i in num:
+    if ret>=3: break
+    for j in i:
+        ret = bingo(j,n)
+        if ret >=3: 
+            print(n)
+            break
+        n += 1
+
+# 백준 2491 수열
+N = int(input())
+lst = list(map(int,input().split()))
+dp1,dp2 = [0] * (N+1), [0]*(N+1)
+ans = []
+Max = 0
+for i in range(1,N):
+    if lst[i-1] <= lst[i]: 
+        dp1[i] = dp1[i-1]+1
+
+for i in range(1,N):
+    if lst[i-1] >= lst[i]:
+        dp2[i] = dp2[i-1] +1
+print(dp2)
+a,b = max(dp1),max(dp2)
+print(max(a,b)+1)
+
+# 백준 2309 일곱 난쟁이
+def dfs(lv,st):
+    global ret
+    if sum(path)>100: return
+    if lv==7:
+        if sum(path)==100 and ret==0:
+            path.sort()
+            for g in path:
+                print(g)
+                ret = 1
+        return
+    for i in range(st,9):
+        path[lv] = lst[i]
+        dfs(lv+1,i+1)
+        path[lv] = 0
+lst = []
+for i in range(9):
+    lst.append(int(input()))
+path = [0]*7
+ret = 0
+dfs(0,0)
