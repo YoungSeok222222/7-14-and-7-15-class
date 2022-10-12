@@ -1,0 +1,13 @@
+
+2. python manage.py runserver -> 개발 서버
+	- 로컬용 개발 서버를 여는 것
+
+3. collectstatic
+	- 내부적으로는 app/static/
+		- 각각의 앱에 static 파일이 저장되어 있다는 사실을 django가 알고 있음
+	- 그런데, 실제 배포는 django runserver는 배포 환경에서 쓸 수 없다.
+		- 다른 프로그램이랑 연동해서 사용하게 됨
+		- 다른 프로그램은 django 내부에서"만" 알고있는 static 경로 등을 사용할 수 없다.
+			-> collectstatic 사용해서 한 폴더로 모아줌(STATIC_ROOT)
+4. {% load bootstarp5%}
+	-왜 쓰는지? 어떤 의미인지?
