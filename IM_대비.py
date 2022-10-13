@@ -157,6 +157,30 @@ for tc in range(1, T+1):
             ans += lst[y][x] + lst[N-y-1][x]    # 정사각형 마름모 기준 위쪽 좌표값 + 아래쪽 좌표값
     # 정가운데는 2번 더했기 때문에 다시 가운데 줄 전체를 한 번 빼준다.
     print(f"#{tc} {ans-sum(lst[md])}")
+
+# 승빈이형 풀이
+T=int(input())
+for tc in range(1,1+T):
+    def agri(st,ed):
+        global result
+        for i in range(n):
+            for j in range(st,ed+1):
+                result+=farm[i][j]  
+            if i<mid:
+                st-=1
+                ed+=1
+            elif i>=mid:
+                st+=1
+                ed-=1
+        return result  
+    n = int(input())
+    farm=[list(map(int,input())) for _ in range(n)]
+    result=0
+     
+    mid=n//2
+    st,ed=mid,mid
+    ret=agri(st,ed)
+    print(f'#{tc} {ret}')
 # ========================================================================
 # 1258 [S/W 문제해결 응용] 7일차 - 행렬찾기
 
@@ -446,7 +470,7 @@ def othello(y, x, n):
                 ar.append([dy, dx])                     #15 ar 배열에 좌표를 추가
             j += 1                                  #16 위의 조건들과는 상관 없이 계속 j에 +1 (한 방향으로 쭉 뻗어나가기위해)
         for ry, rx in ar:                           
-            lst[ry][rx] = n                         #17 ar 배열의 좌표를 하나씩 꺼내 해당 lst 좌표값에 함수로 받은 돌(1=흑, 2=백)로 바꿔줌
+            lst[ry][rx] = n                         #17 ar 배열의 좌표를 하나씩 꺼내 해당 lst 좌표값에 함수로 받은 돌(1=검은돌, 2=흰돌)로 바꿔줌
 
 move = [[-1, 0], [1, 0], [0, -1], [0, 1], [-1, 1], [1, 1], [1, -1], [-1, -1]]   #1 상 하 좌 우 우상 우하 좌하 좌상
 T = int(input())
@@ -454,7 +478,7 @@ for tc in range(1, T+1):
     N, M = map(int, input().split())
     lst = [[0]*N for _ in range(N)]
     md = N // 2                                     #2 중간을 구하기 위해 //2
-    lst[md][md] = 2                                 #3 lst 배열 중간에 흰돌과 흑돌을 설정
+    lst[md][md] = 2                                 #3 lst 배열 중간에 흰돌과 검은돌을 설정
     lst[md-1][md-1] = 2
     lst[md][md-1] = 1
     lst[md-1][md] = 1
@@ -465,7 +489,7 @@ for tc in range(1, T+1):
         othello(y-1, x-1, c)                        #7 함수로 보내 탐색 시작
 
     B, W = 0, 0
-    for y in range(N):                              #18 함수가 끝나면 흰돌과 흑돌 개수 세기
+    for y in range(N):                              #18 함수가 끝나면 흰돌과 검은돌 개수 세기
         for x in range(N):
             if lst[y][x] == 1:
                 B += 1
@@ -519,3 +543,56 @@ for tc in range(1, T+1):
             elif lst[i][j] == 2:
                 W += 1
     print(f"#{tc} {B} {W}")
+
+# 2116 주사위 쌓기
+def stack_dice(dice,bt):
+    for i in range(6):
+        if dice[i] == bt:           # 현재 주사위의 바닥 값 idx 구하기
+            break
+    if i==0:                        # 0번 idx면 그 반대편 5번과 옆면 값 중 최대값 return
+        return(dice[5],max(dice[1],dice[2],dice[3],dice[4]))
+    elif i==1: 
+        return(dice[3],max(dice[0],dice[2],dice[4],dice[5]))
+    elif i==2:
+        return(dice[4],max(dice[0],dice[1],dice[3],dice[5]))
+    elif i==3:
+        return(dice[1],max(dice[0],dice[2],dice[4],dice[5]))
+    elif i==4:
+        return(dice[2],max(dice[0],dice[1],dice[3],dice[5]))
+    else:
+        return(dice[0],max(dice[1],dice[2],dice[3],dice[4]))
+
+
+t = int(input())     
+dice = [list(map(int,input().split())) for _ in range(t)]   
+ans = 0
+for i in range(1,7):    # 맨 처음 주사위(=가장 아래 있는 주사위 중 몇 번이 아래로 갈 때 최대값이 나오는지)
+    bottom = i          # 1~6까지 하나씩 가장 아래 있는 주사위의 바닥면으로 설정
+    Max = 0
+    for j in range(t):  # 모든 주사위 
+        bottom,ret = stack_dice(dice[j],bottom)  # 현재 주사위의 바닥면을 보내고 -> 꼭대기면(다음 주사위의 바닥면) 받아오기
+        Max += ret                               # 옆면의 값 중 가장 큰 값도 받아와서 더하기
+    ans = max(ans,Max)                           # 모든 주사위의 옆면을 더했으면 최대 값 갱신
+print(ans)
+
+# 백준 2477 참외밭
+k = int(input())
+lst = [list(map(int,input().split())) for _ in range(6)]
+garo,sero= [], []
+dif = []                                    
+                                            
+for i in range(len(lst)):                   # 1=동, 2=서,3=남, 4=북
+    if lst[i][0] == 1 or lst[i][0]==2:      # 동이나 서로 가는 거면 garo에 추가
+        garo.append(lst[i][1])
+    elif lst[i][0] ==3 or  lst[i][0]==4:    # 남이나 북이면 sero에 추가
+        sero.append(lst[i][1])
+
+for j in range(6):                          #1 작은 사각형 찾기
+    if lst[j][0] == lst[(j+2)%6][0]:        # 만약 현재 방향이 다다음 방향과 같으면  
+        dif.append(lst[(j+1)%6][1])         # 다음 방향을 추가 (자세한 설명은 아래 참조)
+
+# (큰 사각형 가로 * 큰 사각형 세로 - 작은 사각형) * 제곱당 자라는 참외 수
+print((max(garo)*max(sero)-max(dif)*min(dif))*k)   
+
+
+# 
