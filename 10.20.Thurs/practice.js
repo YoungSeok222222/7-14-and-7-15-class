@@ -109,3 +109,17 @@ console.log('===========================')
 console.log('삼항 연산자')
 console.log(true ? 1:3)
 console.log(false ? 1:3)
+console.log('===========================')
+
+// 조건문(if, switch)
+console.log('조건문-if/ else if/ esle')
+const name3 = 'manager'
+if (name3==='admin') {
+    console.log('관리자님 환영합니다.')
+} else if (name3==='manager'){
+    console.log('매니저님 환영합니다.')   
+} else {
+    console.log(`${name3}님 환영합니다.`)
+}
+
+

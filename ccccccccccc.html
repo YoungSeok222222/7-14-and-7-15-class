@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="alert_button()">Alert 버튼</button>
+
+    <button onclick="change_text()">글씨 변경</button>
+    <p id="text1">안녕하세요!</p>
+
+    <button onclick="change_text_by_class()">글씨 변경</button>
+    <p class="my_text">클래스 접근도 되나요?</p>
+    <p class="my_text">한 번에 다 바뀌나요?</p>
+    <p class="my_text">여기도 바뀌나요?</p>
+
+
+    <script>
+        let idx = 0
+        function alert_button(){
+            alert('안녕하세요~')
+        }
+        function change_text(){
+            document.getElementById('text1').innerText='버튼 클릭했다!'
+        }
+        function change_text_by_class(){
+            // 버튼 클릭 시 마다 class element가 하나 씩 변하도록
+            document.getElementsByClassName('my_text')[idx++].innerText='바뀜!' // idx -> idx +1 순서
+            // idx += 1
+        
+        }
+                
+                
+        
+    </script>
+</body>
+</html>
