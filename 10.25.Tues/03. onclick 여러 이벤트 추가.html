@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" <!DOCTYPE html />
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+          form {
+            background-color: green;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            cursor: pointer;
+          }
+
+          div {
+            background-color: blue;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 100px;
+            height: 100px;
+          }
+
+          p {
+            background-color: red;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0;
+          }
+        </style>
+      </head>
+      <body>
+        <!-- onclick 에 여러 메소드 사용하려면 -->
+        <!-- 템플릿 태그에서 아래와 같이 세미콜론으로 구분하여 사용하면 된다 -->
+        <p onclick="method1(); method2(); method3();">P 태그</p>
+
+        <script>
+          const method1 = function (event) {
+            console.log("첫 번째 메서드");
+          };
+
+          const method2 = function (event) {
+            console.log("두 번째 메서드");
+          };
+
+          const method3 = function (event) {
+            console.log("세 번째 메서드");
+          };
+
+          // const pTag = document.querySelector("p")
+          // pTag.onlick = method1
+          // pTag.onlick = method2
+          // pTag.onlick = method3
+          // addEventListener 처럼 코딩할 경우
+          // onclick 에 등록된 method 에 재할당되므로 method3 만 출력된다.
+          // onclick 의 경우 위 템플릿 코드 부분을 수정해야 한다.
+          
+        </script>
+      </body>
+</html>

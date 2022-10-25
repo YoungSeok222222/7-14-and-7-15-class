@@ -79,6 +79,14 @@
     formTag.addEventListener('click', formTodo)
 
 
+
+    // 객체의 메서드에서 this 에 접근할 때는 화살표 함수 사용을 지양해야 한다
+    // ( 화살표 함수에서 this 는 한 단계 상위 객체를 참조하기 때문에 )
+    const formTodo = (event) => {
+      console.log('formTodo')
+      //              object Window
+      console.log(`this = ${this} / event.target = ${event.target}`)
+    }
   </script>
 </body>
 </html>
