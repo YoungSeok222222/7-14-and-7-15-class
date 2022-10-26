@@ -1,0 +1,59 @@
+1. Synchronous, Asynchrounous, Blocking, Non-Blocking
+    - 비슷한 개념이라 혼동 할 수 있다.
+    - 정확하겐 다른 개념이다.
+
+Synchronous, Asynchrounous
+    - 순서대로 일이 마치는가 ? 에 대한 여부
+    - A -> B -> C 함수가 순서대로 호출 되었을 때, 순서대로 끝나는가
+    - 즉, 실행 순서와 끝나는 순서가 동일한가에 대한 구분
+        -> 동시에 작업을 하는가 ? 이건 다른 문제
+
+Blocking, Non-Blocking
+    - 동시에 작업을 할 수 있는가 ?
+        -> 호출한 함수가 제어권을 계속 가지고 있는가 ?
+    - A 함수에서 B 함수 호출
+    - A 함수에서 B 함수가 끝날때까지
+        - A 함수가 아무것도 못하면 Blocking
+        - A 함수가 자기 일을 동시에 한다면 Non-Blocking
+
+
+예시
+
+강사 금기륜이 영석님한테 일을 시키고, 밥을 먹으러 가고 싶다.
+
+1. 일을 시키고, 밥을 먹으러 감
+    - 일과 동시에 밥을 먹는 것 ( Non-Blocking )
+    1.1 밥을 먹는 중에, 영석님이 일이 끝났다고 전화로 말함
+        - 끝나는 순서는 동일 ( Synchronous )
+            -> NonBlocking-Synchronous
+        - [참고] 컴퓨터로 치면, 금기륜이 계속 전화로 확인함
+            - 일 끝났니 ? 일 끝났니 ?
+
+    1.2 밥을 먹고 와서 일에 대한 결과를 들음
+        - 끝나는 순서가 바뀜 ( Asynchrounous )
+            -> NonBlocking-Asynchrounous
+
+2. 일의 결과를 듣고 밥을 먹으러 가기로 함
+    - 밥을 동시에 먹지 못함 ( Blocking )
+    - 이 예시의 경우 무조건 Blocking-Synchronous
+
+- 그렇다면, Blocking-Asynchrounous 은 ?
+    - 실제 사례를 봐도, 설계를 일부러 하는 경우는 거의 없다
+        -> 개발자의 실수
+    - NonBlocking-Asynchrounous 방식을 쓰는데,
+        그 과정 중에 하나라도 Blocking 요소가 존재한다면,
+        의도하지 않게 Blocking-Asynchrounous 가 발생가능
+
+
+
+자바스크립트에서 비동기를 처리하는 방법(함수, 라이브러리)
+
+1. callback funtion
+    - 콜백 지옥
+2. Promise
+    - .then() 으로 콜백 지옥 해결 !
+    - 가독성이 여전히 만족스럽지 않음
+3. async&await ( ES8 에 정식 등록 )
+    - 단점 해결 !
+    - 가독성 좋음
+    - Promise 기반으로 만들어짐
