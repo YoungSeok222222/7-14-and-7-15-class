@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // console.log('Hi')
+
+    // setTimeout(function () {
+    //   console.log('SSAFY')
+    // }, 3000)
+
+    // console.log('Bye')
+
+  // -----------------------------------------------------
+  // 1. Promise 사용해보기(hi -> SSAFY -> bye 출력되도록)
+
+  function printSSAFY() {
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      console.log("SSAFY");
+      resolve();
+    }, 3000);
+  });
+}
+
+console.log("Hi");
+printSSAFY().then(() => {
+  console.log("Bye");
+});
+
+
+  </script>
+</body>
+</html>
