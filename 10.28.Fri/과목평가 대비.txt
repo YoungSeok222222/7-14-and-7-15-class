@@ -1,0 +1,50 @@
+template
+	- 에러가 많다? 
+	- NO reverse match
+	- 데이터가 안 나올 때(혹은 일부만 뜰 때)
+	- form 태그 (action, method)
+	- 로그인된 사용자만 출력(is_authenticated)
+
+view
+	- url에서 전달하는 argument와 parameter 변수 명이 일치하는 지
+	- 참조 역참조 이름
+		- 참조: comment.article.~~ 
+		- 역참조: article.comment_set(related_name 없을 시)
+		- related_name 적용 후 역참조: article.comments.
+	-  'Article object has no attribute 'comment_set'
+
+	- commit = False
+	- instance
+		article = ArticleForm(instance=article)
+	
+	
+- 예상문제: 게시글 내용을 수정 후 수정버튼을 눌렀는데,
+	게시글이 생성이 되어버렸다.
+원하는 동작을 하도록 views.py를 수정하여라
+
+
+DB 반영 시 사용하는 명령어(설명할 줄 알아야 한다.)
+	python manage.py makemigrations
+		- No changes detected(요건 에러가 아님)
+	python manage.py migrate
+
+
+User 모델 재정의 하는 이유
+	- 사용자가 원하는 필드를 추가하기 위해
+		- ex) 휴대폰 번호
+	- 기본 제공하는 기능 외 기능을 추가하기 위해
+
+
+(Custom) UserChangeForm 등 새로운 Form 사용하는 이유
+	- 기본 제공: from django.contrib.auth.forms import UserChangeForm
+	- 기본으로 제공되는 UserChangeForm은 Meta 클래스의 model이 django 기본 user로 되어있다.
+	--> Custom User 모델을 사용하기 위해
+		-> form에 바인딩 될 모델이 Custom User로 바뀌어야 하기 때문에
+
+
+
+예시 : UserChangeForm(forms.Modelform):
+	class Meta:
+		model = User
+		fields
+		exclude

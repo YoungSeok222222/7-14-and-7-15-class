@@ -22,8 +22,6 @@ N, M  = map(int,input().split())
 ar = list(map(int,input().split()))
 Max,ret =  0, 0 
 
-
-
 # 3장 뽑아야 하기 때문에 3중 for문 사용
 # ex. 5 21 
 # 
