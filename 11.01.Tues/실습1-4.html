@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+  <div id="lunchMenu">
+    <h1>점심 메뉴</h1>
+    <button @click="PickOne">Pick One</button>
+    <p>{{ menu }}</p>
+    <hr>
+  </div>
+
+  <div id="lotto">
+    <h1>로또</h1>
+    <button @click="getLotto">Get Lucky Numbers</button>
+    <p>{{ luckyNum }}</p>
+  </div>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#lunchMenu",
+      data: {
+        menus : ['돼지갈비찜', '불고기 두부전골', '스노윙치킨+햄 야채 주먹밥', '차돌짬뽕+깐풍기', '게살라면+미니참치마요 덮밥'],
+        menu : '메뉴를 선택하세요'
+      },
+      methods: {
+        PickOne(){
+          this.menu = _.sample(this.menus)
+        },
+      }
+    })
+
+    const lotto = new Vue({
+      el : '#lotto',
+      data: {
+        luckyNum : '번호'
+
+      },
+      methods : {
+        getLotto(){
+          const numbers = _.range(1,46)
+          this.luckyNum =_.sampleSize(numbers,6)
+
+
+
+        } 
+      }
+    })
+  </script>
+</body>
+</html>
