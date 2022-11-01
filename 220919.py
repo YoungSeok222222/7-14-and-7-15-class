@@ -1,6 +1,7 @@
 n = int(input())
 ar = [list(map(int,input().split())) for _ in range(n)]
 re = []
+print(ar)
 for i in range(n):
     num = 1
     for j in range(n):
