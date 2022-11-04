@@ -1,0 +1,70 @@
+1. 변수 선언 : var, let, const
+	-var vs let 차이점?
+	- 각각 선언 방식에서 주의 사항
+		초기화, 재할당
+ex.)
+let a 
+
+const a 
+
+에러 발생? 
+
+
+var a = 10
+
+a = 20
+
+에러 발생?
+=================
+
+2. 자바스크립트 원시 타입 종류
+
+	(함수는 객체)
+
+3. 함수 표현식과 함수 선언식, 화살표 함수
+	- 파라미터 전달 받는 법(여러 개)
+	- 화살표 함수 쓰는 법 : 다음 중 같은 함수가 아닌 것
+
+4. Object의 개념
+	- 생성법
+	- 접근법(인덱스로)
+	- 값 가져오는 법
+
+5. 결과가 참인 것은?
+	- ''
+	- []
+	- {}
+	- undefined
+
+6. Array
+	- Array 객체의 개념
+	- Array Helper Method
+		-> 각각 개념과 결과
+
+여기까지 자바스크립트 기초
+============================
+
+7. DOM 조작
+	- element 생성법(createElement)
+	- element 접근법(querySelector, querySelectorAll)
+	- class 수정법 3가지
+		- classList.add
+		- setAttribute
+		- className
+
+8. 싱글 쓰레드 기반인 자바스크립트에서 비동기가 가능한 이유
+	-task queue
+	- event loop
+	- call stack
+	- Wep APIS
+	각각 개념과 역할
+
+9. AJAX 란?
+	- 약자
+	- 개념
+	- JSON 약자
+		-> JSON이 왜 AJAX랑 연관이 있는지 공부하기
+	- axios와의 차이점
+
+10. axios
+	-코딩하는 방법(Promise 객체 기반)
