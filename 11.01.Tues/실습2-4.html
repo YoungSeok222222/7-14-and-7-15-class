@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .decoration {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Todo List</h1>
+      <div>
+        <input type="text" v-model="word">
+        <button @click="plusTodoList">+</button>
+      </div>
+      
+      <ul>
+        <li 
+        v-for="(todo,idx) in todoList" 
+        :key="idx" 
+        :class="{decoration : todo.isChecked}"
+        >
+          {{ idx }} : {{ todo.text }}
+          <input type="checkbox" v-model="todo.isChecked" @change="setStatus">
+        </li>
+
+      </ul>
+
+      <button @click="deleteComplete">완료 목록 삭제</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          word : '',
+          todoList : JSON.parse(localStorage.getItem('todoList'))
+        },
+        methods: {
+          plusTodoList(){
+            if (this.word.length===0){
+              alert('내용을 입력해 주세요!')
+            } else {
+              this.todoList.push({text:this.word, isChecked : false})
+            }
+            // localStorage.setItem(key, value)
+            localStorage.setItem('todoList', JSON.stringify(this.todoList))
+          },
+          deleteComplete(){
+            this.todoList = this.todoList.filter((todo)=> todo.isChecked===false)
+            // 로컬스토리지의 todoList를 덮어쓴다.
+            localStorage.setItem('todoList', JSON.stringify(this.todoList))
+          },
+          // Vue 인스턴스에는 값이 반영되었으나,
+          // 로컬스토리지에는 변환된 값이 들어가지 않아 덮어쓰기 위해 change 이벤트 함수를 추가
+          setStatus() {
+            localStorage.setItem('todoList', JSON.stringify(this.todoList))
+          }
+          
+
+          }
+        })
+              
+
+
+    </script>
+  </body>
+</html>
