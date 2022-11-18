@@ -1,0 +1,34 @@
+[참고] 환경 변수 와 Node JS 의 환경 변수
+
+환경 변수(Environment Variables)란 ?
+
+- 일반적으로 우리는 하나의 코드를 개발, 테스트, 운영 등등 다양한 환경에서 사용한다.
+- 어느 환경에 배포하느냐에 따라서 다르게 설정해야하는 항목은 보통 운영 체제 레벨에서 환경 변수를 통해 관리한다.
+- 대표적인 예로, 개발 환경에서는 로컬 DB를 사용해야하는데, 운영 환경에서는 원격 DB를 사용해야하는 경우
+- 또한 DB password나 API key와 같은 인증 정보는 공개된 코드 저장소에 올리면 안 되기 때문에 환경 변수로 저장해놓고 사용하는 것이 일반적이다.
+
+========================================
+
+Node JS 의 환경 변수
+
+Node JS 의 경우 환경 변수를 .env 파일로 관리한다.
+종류는 아래와 같다.
+
+.env : development, production 등 모든 환경에 사용되는 환경 변수
+
+.env.local: 로컬 환경에서 사용할 환경변수. 기본적으로 .gitignore에 포함되어 있다. test 모드를 제외하고 모든 환경에서 로딩된다.
+
+.env.development: development환경에서 사용할 환경 변수. npm run serve 를 별다른 옵션없이 사용하면 development 환경을 인식하기 때문에 이 환경변수를 사용한다.
+
+.env.production: production환경에서 사용할 환경 변수. --mode production으로 production 모드를 사용할 경우 development대신 이 환경변수가 사용된다.
+
+.env > .env.local > .env.development > .env.production 순서대로 우선 순위가 높다.
+여기에 환경 변수를 작성해주고 코드에서 접근하면 된다.
+
+작성 시 주의 사항
+새로운 환경변수를 추가할 때는 반드시 VUE_APP 으로 시작해야 한다
+그렇지 않으면 인식하지 못한다.
+<br/>
+
+접근법은 process.env.~~ 처럼 사용한다.
+예시 ) const API_KEY = process.env.VUE_APP_YOUTUBE_API_KEY
