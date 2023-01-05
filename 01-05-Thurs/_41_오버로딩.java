@@ -1,4 +1,4 @@
-public class _66_오버로딩 {
+public class _41_오버로딩 {
     public static void main(String[] args) {
 // ch6-30 오버로딩(overloading)
         // 한 클래스 안에 같은 이름의 메서드 여러 개 정의하는 것 - 대표적으로 println
@@ -17,12 +17,6 @@ public class _66_오버로딩 {
         */
 
         // 66 - 2:36
-
-
-
-
-
-
 
     }
 }
